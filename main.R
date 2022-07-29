@@ -71,4 +71,5 @@ fc <- fc %>%
   filter(h > 0 | is.na(quantile)) %>% 
   select(forecast_date, target, target_end_date, location, type, quantile, value, scenario_id)
 
+dir.create(file.path("data-processed", "CovidMetrics-epiBATS"), recursive = TRUE)
 write_csv(fc,here::here("data-processed","CovidMetrics-epiBATS" , paste0(forecast_date,"-CovidMetrics-epiBATS.csv")))
