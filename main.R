@@ -11,7 +11,7 @@ df <- read_csv("https://raw.githubusercontent.com/covid19-forecast-hub-europe/co
          , weekly_cases = if_else(is.na(weekly_cases), 0,weekly_cases))
 
 # Prepare forecast
-forecast_date <- max(df$date) + days(1)
+forecast_date <- floor_date(max(df$date), unit = "week", week_start = 1)
 target_end_dates <- seq(forecast_date , forecast_date + weeks(3), by = "1 weeks") + days(5)
 fc_level <- 95
 h = as.numeric(difftime(max(target_end_dates),forecast_date, "days"))
